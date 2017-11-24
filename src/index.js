@@ -59,10 +59,6 @@ function returnCounter(number = 0) {
  */
 function bindFunction(fn, ...arg) {
   let a;
-//  for (let i = 0; i < arg.length; i += 1) {
-//    a.bind(arg[i]);
-//  }
-//  console.log(arg);
   a = fn.bind(null, ...arg);
   return a;
 }
