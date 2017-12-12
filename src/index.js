@@ -57,9 +57,13 @@ function emulateClick(target) {
  * @param {function} fn - функция, которую нужно вызвать при клике на элемент BUTTON внутри target
  */
 function delegate(target, fn) {
-    var but = target.querySelector('BUTTON');
-    
-    but.addEventListener('click', fn);
+    target.onclick = function(e) {
+        var targ = e.target;
+        
+        if (targ.tagName == 'BUTTON') {
+            fn(targ);
+        }
+    }
 }
 
 /**
@@ -71,7 +75,13 @@ function delegate(target, fn) {
  * @param {Element} target - элемент, на который нужно добавить обработчик
  * @param {function} fn - обработчик
  */
-function once(target, fn) {}
+function once(target, fn) {
+    function once() {
+        fn();
+        target.removeEventListener('click', once);
+    }
+    target.addEventListener('click', once);
+}
 
 export {
     addListener,
