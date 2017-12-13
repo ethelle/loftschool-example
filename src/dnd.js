@@ -86,15 +86,14 @@ function addListeners(target) {
         this.style.top = event.clientY - mouseY + 'px';
     }
     
-    var elems = document.querySelectorAll('.draggable-div');
+    var elem = target;
     
-    [].forEach.call(elems, function (elem) {
-        elem.addEventListener('dragstart', dragStart, false);
-        elem.addEventListener('dragenter', dragEnter, false)
-        elem.addEventListener('dragover', dragOver, false);
-        elem.addEventListener('drop', dragDrop, false);
-        elem.addEventListener('dragend', dragEnd, false);
-    });
+    elem.addEventListener('dragstart', dragStart, false);
+    elem.addEventListener('dragenter', dragEnter, false)
+    elem.addEventListener('dragover', dragOver, false);
+    elem.addEventListener('drop', dragDrop, false);
+    elem.addEventListener('dragend', dragEnd, false);
+
 }
 
 let addDivButton = homeworkContainer.querySelector('#addDiv');
